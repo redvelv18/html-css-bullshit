@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6. uzdevums — Slāņu pārklāšana ar z-index</title>
+    <link rel="stylesheet" href="uzdevumi.css">
+</head>
+<body>
+
+    <h1>6. uzdevums: slāņu pārklāšana ar z-index</h1>
+
+    <div class="layer-container">
+        <div class="square square--red">Sarkans<br>z-index: 1</div>
+        <div class="square square--green">Zaļš<br>z-index: 2</div>
+        <div class="square square--blue">Zils<br>z-index: 3</div>
+    </div>
+
+    <p>
+        <strong>Pārbaude:</strong> pašlaik visaugšā ir zilais
+        (<code>z-index: 3</code>, pēdējais HTML), vidū zaļais (2),
+        viszemāk sarkanais (1). Kvadrāti pārklājas, bet kārtību
+        nosaka <code>z-index</code>, nevis dokumenta secība.
+    </p>
+
+    <p>
+        <strong>Eksperimenti</strong> (CSS failā, meklē
+        <code>.square--red</code>, <code>.square--green</code>,
+        <code>.square--blue</code>):
+    </p>
+    <ul>
+        <li>Maini z-index vērtības — redzi, kurš kvadrāts kļūst redzams virs pārējiem.</li>
+        <li>
+            Izdzēs visus trīs <code>z-index</code> — noklusējuma
+            pārklāšanās secība ir <strong>dokumenta secība</strong>:
+            sarkanais apakšā, tad zaļš, tad zilais virsū (jo viņš ir
+            pēdējais HTML kodā).
+        </li>
+        <li>Pieliec vienādam z-index — tad virsū būs tas, kas HTML ir vēlāk.</li>
+    </ul>
+
+</body>
+</html>

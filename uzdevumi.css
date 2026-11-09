@@ -32,6 +32,14 @@
 }
 
 
+
+
+
+
+
+
+
+
 .container {
     position: relative;   
     width: 400px;
@@ -85,10 +93,18 @@
 
     z-index: 1000;    
 }
+
+
+
+
+
+
 body {
     margin: 0;
     padding-bottom: 70px;   
 }
+
+
 
 .lorem-text {
     max-width: 700px;
@@ -129,4 +145,104 @@ body {
 .sticky-section p {
     line-height: 1.7;
     margin: 15px 0;
+}
+
+
+/* ---------------------------------------------------------
+   6. UZDEVUMS: slāņu pārklāšana ar z-index
+   Trīs absolūti pozicionēti kvadrāti ar dažādiem
+   z-index (1, 2, 3), kas pārklājas.
+   Lielāks z-index = augšējais slānis.
+   --------------------------------------------------------- */
+.layer-container {
+    position: relative;      /* lai z-index būtu konteksts */
+    width: 320px;
+    height: 220px;
+    border: 2px solid #333;
+    background-color: #f5f5f5;
+    margin: 20px;
+}
+
+.square {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    line-height: 140px;
+}
+
+.square--red {
+    top: 20px;
+    left: 20px;
+    background-color: #e74c3c;
+    z-index: 1;
+}
+
+.square--green {
+    top: 60px;
+    left: 90px;
+    background-color: #2ecc71;
+    z-index: 2;
+}
+
+.square--blue {
+    top: 100px;
+    left: 160px;
+    background-color: #3498db;
+    z-index: 3;
+}
+
+/* --- EKSPERIMENTS ---
+   1. Maini z-index vērtības un redzi, kurš kvadrāts ir virsū.
+   2. Izdzēs visus trīs z-index — noklusējuma pārklāšanās
+      secība ir dokumenta secība (pirmais elements viszemāk):
+      sarkanais < zaļais < zilais virsū. */
+
+
+/* ---------------------------------------------------------
+   7. UZDEVUMS: responsīvā pozīcija ar mediju vaicājumiem
+   Plašiem ekrāniem: sidebar absolūti pa labi.
+   Šauriem (≤ 600px): sidebar kļūst par statisku augšējo joslu.
+   --------------------------------------------------------- */
+.layout {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 220px;
+    background-color: #4a6fa5;
+    color: #fff;
+    padding: 15px;
+    box-sizing: border-box;
+    z-index: 50;
+}
+
+.main-content {
+    margin-right: 260px;    /* vieta sidebar labajā pusē */
+    background-color: #f0f0f0;
+    padding: 15px;
+    min-height: 500px;
+    box-sizing: border-box;
+}
+
+/* Mediju vaicājums: ekrāna platumam līdz 600px */
+@media (max-width: 600px) {
+    .sidebar {
+        position: static;   /* kļūst par parastu augšējo joslu */
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .main-content {
+        margin-right: 0;    /* vairs nav vietas atvēlētas sānu joslai */
+    }
 }
